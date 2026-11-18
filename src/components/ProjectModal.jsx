@@ -158,42 +158,55 @@ export default function ProjectModal({ project, onClose }) {
               {/* Interactive Simulator for CODEXA */}
               {project.id === 'codexa' && (
                 <div className="space-y-5">
-                  <div className="flex items-center justify-between bg-slate-50 p-4 rounded-2xl border border-emerald-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50 p-4 rounded-2xl border border-emerald-100">
                     <div>
-                      <span className="text-xs font-mono text-emerald-800 font-bold uppercase bg-emerald-100 px-2 py-0.5 rounded">
-                        {project.demoData.difficulty}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono text-emerald-800 font-bold uppercase bg-emerald-100 px-2 py-0.5 rounded">
+                          {project.demoData.difficulty}
+                        </span>
+                        <span className="text-[11px] font-mono text-slate-500 font-semibold">
+                          Docker Sandbox &bull; OpenJDK 17
+                        </span>
+                      </div>
                       <h4 className="text-base font-bold text-slate-900 mt-1">{project.demoData.problemTitle}</h4>
                       <p className="text-xs text-slate-600 mt-0.5">{project.demoData.description}</p>
+                      <div className="text-[11px] font-mono text-emerald-700 font-medium mt-1">
+                        ⚡ {project.demoData.runnerInfo}
+                      </div>
                     </div>
 
                     <button
                       onClick={handleRunCode}
                       disabled={runningCode}
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
+                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all cursor-pointer whitespace-nowrap self-start sm:self-center"
                     >
                       <Play className="w-3.5 h-3.5 fill-current" />
-                      <span>{runningCode ? 'Evaluating...' : 'Run Test Cases'}</span>
+                      <span>{runningCode ? 'Compiling in Docker...' : 'Execute in Sandbox'}</span>
                     </button>
                   </div>
 
-                  {/* Code Editor Preview */}
+                  {/* Code Editor Preview (Monaco Editor Style) */}
                   <div className="rounded-2xl bg-[#061712] border border-emerald-900/40 overflow-hidden font-mono text-xs shadow-lg">
                     <div className="bg-[#040f0c] px-4 py-2 border-b border-emerald-900/30 flex items-center justify-between text-slate-400">
                       <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-                        <Code className="w-3.5 h-3.5" /> Solution.js
+                        <Code className="w-3.5 h-3.5" /> Solution.java
                       </span>
-                      <span className="text-emerald-500/70">JavaScript ES6</span>
+                      <span className="text-emerald-500/80 font-mono text-[11px]">OpenJDK 17 &bull; Monaco Engine</span>
                     </div>
                     <pre className="p-4 text-emerald-300 overflow-x-auto leading-relaxed">
                       <code>{project.demoData.codeSnippet}</code>
                     </pre>
                   </div>
 
-                  {/* Test Cases Results */}
+                  {/* Test Cases Results with Docker Telemetry */}
                   <div className="space-y-2">
-                    <div className="text-xs font-mono text-slate-600 uppercase font-bold">
-                      Test Suite Execution Results:
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-600">
+                      <span className="uppercase font-bold">Driver-Code Assembly & Verdicts:</span>
+                      {codeExecutionDone && (
+                        <span className="text-emerald-700 font-bold">
+                          ✓ Verdict: ACCEPTED (Avg: 35ms &bull; Memory: 24.1 MB)
+                        </span>
+                      )}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       {project.demoData.testCases.map((tc, idx) => (
@@ -206,13 +219,15 @@ export default function ProjectModal({ project, onClose }) {
                           }`}
                         >
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-slate-500">Case {idx + 1}</span>
+                            <span className="text-slate-500 font-semibold">Test Case {idx + 1}</span>
                             {codeExecutionDone && (
-                              <span className="text-emerald-700 font-bold">Passed</span>
+                              <span className="text-emerald-700 font-bold bg-emerald-100/80 px-1.5 py-0.2 rounded text-[10px]">
+                                {tc.verdict} ({tc.time})
+                              </span>
                             )}
                           </div>
                           <div className="text-[11px] truncate text-slate-700">{tc.input}</div>
-                          <div className="text-[11px] text-emerald-700 font-semibold mt-1">&rarr; {tc.output}</div>
+                          <div className="text-[11px] text-emerald-700 font-semibold mt-1">Expected: {tc.output}</div>
                         </div>
                       ))}
                     </div>
@@ -225,14 +240,19 @@ export default function ProjectModal({ project, onClose }) {
                 <div className="space-y-6">
                   <div className="p-4 rounded-2xl bg-slate-50 border border-emerald-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <div className="text-xs font-mono text-emerald-700 font-bold uppercase">
-                        AI Resume vs Job Description Parser
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono text-emerald-700 font-bold uppercase">
+                          AI NLP Resume Screener & Intelligence
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-500 bg-slate-200/60 px-2 py-0.5 rounded">
+                          FastAPI IPC Service
+                        </span>
                       </div>
                       <div className="text-sm font-bold text-slate-900 mt-1">
                         Target Role: {targetRole}
                       </div>
                       <p className="text-xs text-slate-500">
-                        Extracting semantic vectors & comparing keyword overlap using ML
+                        Sentence-Transformers (all-MiniLM-L6-v2) + RapidFuzz (60+ tech aliases) + Ollama (Phi-3)
                       </p>
                     </div>
 
@@ -242,18 +262,18 @@ export default function ProjectModal({ project, onClose }) {
                       className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all cursor-pointer whitespace-nowrap self-start sm:self-center"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
-                      <span>{analyzingResume ? 'Analyzing Resume...' : 'Analyze Sample Resume'}</span>
+                      <span>{analyzingResume ? 'Running Inference...' : 'Analyze Sample Resume'}</span>
                     </button>
                   </div>
 
                   {/* ATS Score Gauges */}
                   <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
                     <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col items-center justify-center text-center">
-                      <span className="text-xs font-mono text-emerald-800 font-semibold mb-1">ATS Match Score</span>
+                      <span className="text-xs font-mono text-emerald-800 font-semibold mb-1">ATS Semantic Score</span>
                       <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-teal-700">
                         {atsScore}%
                       </span>
-                      <span className="text-[10px] text-emerald-700 font-mono font-bold mt-1">&bull; High Compatibility</span>
+                      <span className="text-[10px] text-emerald-700 font-mono font-bold mt-1">&bull; High Cosine Similarity</span>
                     </div>
 
                     {project.demoData.categoryScores.map((cat, i) => (
@@ -277,7 +297,7 @@ export default function ProjectModal({ project, onClose }) {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                     <div className="p-4 rounded-2xl bg-slate-50 border border-emerald-100">
                       <div className="font-bold text-emerald-800 mb-2 flex items-center gap-1.5">
-                        <CheckCircle className="w-4 h-4 text-emerald-600" /> Detected Core Attributes
+                        <CheckCircle className="w-4 h-4 text-emerald-600" /> RapidFuzz Mapped Tech Aliases
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.demoData.detectedSkills.map((s, idx) => (
@@ -290,7 +310,7 @@ export default function ProjectModal({ project, onClose }) {
 
                     <div className="p-4 rounded-2xl bg-slate-50 border border-amber-200">
                       <div className="font-bold text-amber-800 mb-2 flex items-center gap-1.5">
-                        <AlertCircle className="w-4 h-4 text-amber-600" /> Recommended Keyword Additions
+                        <AlertCircle className="w-4 h-4 text-amber-600" /> Flagged Missing Competencies
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.demoData.missingKeywords.map((k, idx) => (
@@ -301,6 +321,18 @@ export default function ProjectModal({ project, onClose }) {
                       </div>
                     </div>
                   </div>
+
+                  {/* Ollama (Phi-3) Feedback Block */}
+                  {project.demoData.ollamaFeedback && (
+                    <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs">
+                      <div className="font-bold text-emerald-900 mb-1 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-emerald-600" /> Ollama (Phi-3) AI Career Feedback:
+                      </div>
+                      <p className="text-slate-700 leading-relaxed font-sans">
+                        "{project.demoData.ollamaFeedback}"
+                      </p>
+                    </div>
+                  )}
 
                 </div>
               )}

@@ -16,10 +16,11 @@ import { personalInfo, stats } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume, onOpenTerminal }) {
   const titles = [
-    "Full Stack MERN Developer",
-    "500+ LeetCode DSA Problem Solver",
-    "Creator of CODEXA & CVision",
-    "Azure GenAI & Cloud Enthusiast"
+    "Full Stack & DevOps Engineer",
+    "500+ Problems (LeetCode & GFG)",
+    "Creator of CODEXA (Docker Code Judge)",
+    "Creator of CVision (AI Resume Screener)",
+    "Azure GenAI & RAG Practitioner"
   ];
 
   const [titleIndex, setTitleIndex] = useState(0);
@@ -85,7 +86,7 @@ export default function Hero({ onOpenResume, onOpenTerminal }) {
 
           {/* Summary paragraph */}
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed mb-10">
-            Passionate software engineer skilled in <span className="text-slate-900 font-semibold">Java, DSA</span>, and <span className="text-slate-900 font-semibold">MERN stack</span> development. Architected full-scale systems including <span className="text-emerald-700 font-semibold">CODEXA</span> (online judge platform) and <span className="text-teal-700 font-semibold">CVision</span> (AI resume analyzer) with over <span className="text-emerald-600 font-bold">500+ problems solved</span> on LeetCode.
+            Passionate software engineer skilled in <span className="text-slate-900 font-semibold">Java (Core, OOP, Collections)</span>, <span className="text-slate-900 font-semibold">Full-Stack MERN</span>, and <span className="text-slate-900 font-semibold">DevOps & AI Systems</span>. Architect of <span className="text-emerald-700 font-semibold">CODEXA</span> (Docker-sandboxed OpenJDK 17 online judge) and <span className="text-teal-700 font-semibold">CVision</span> (FastAPI + Sentence-Transformers NLP screener), with <span className="text-emerald-600 font-bold">500+ problems solved</span> across LeetCode & GeeksforGeeks.
           </p>
 
           {/* Action CTAs */}

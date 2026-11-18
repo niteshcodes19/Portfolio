@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Download, Printer, Copy, Check, ExternalLink, Mail, Phone, MapPin, Sparkles } from 'lucide-react';
-import { personalInfo, education, projects, skillsData, experienceAndTraining, certifications } from '../data/portfolioData';
+import { personalInfo } from '../data/portfolioData';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -13,43 +13,47 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   const handleCopyText = () => {
     const resumeText = `NITESH VERMA
-${personalInfo.phone} | ${personalInfo.email} | ${personalInfo.location}
-
-PROFESSIONAL SUMMARY
-Computer Science undergraduate skilled in Java, DSA, and MERN stack development, with hands-on experience building fullstack and AI-powered applications. Developed CODEXA, a coding platform, and CVision, an AI Resume Analyzer integrating Machine Learning and REST APIs. Strong foundation in backend development, authentication, databases, and problem solving, with 500+ DSA problems solved on LeetCode.
++91 9198778130 | nitesh.verma_cs23@gla.ac.in | Mathura, Uttar Pradesh, India
+LinkedIn | GitHub | LeetCode (500+ Solved) | Portfolio
 
 EDUCATION
-- GLA University, Mathura: B.Tech Computer Science Engineering (2023 - 2027)
-- Powayan Inter College: 12th (2021) | 74.6%
-- P.D. Bhartiya Inter College: 10th (2019) | 84.6%
+GLA University                                                  Mathura, UP | 2023 – 2027 (Expected)
+Bachelor of Technology in Computer Science & Engineering                           CGPA: 7.03 / 10.0
+Senior Secondary (12th) — Powayan Inter College | UP Board                               2021 | 74.6%
+Secondary (10th) — P.D. Bhartiya Inter College | UP Board                                2019 | 84.6%
 
 TECHNICAL SKILLS
-- Programming Languages: Java, C, Python, SQL, JavaScript
-- Frontend: HTML, CSS, React
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Concepts: OOP, DSA, REST APIs
-- Tools: Git, GitHub, VS Code, Postman
-- Operating Systems: Windows, Linux
+Languages: Java (Core, OOP, Collections), Python, JavaScript (ES6+), C, SQL
+Frontend Development: React.js, Tailwind CSS, Monaco Editor, HTML5, CSS3, Vite
+Backend & APIs: Node.js, Express.js, FastAPI, RESTful APIs, JWT Authentication, Multer
+AI & Machine Learning: Scikit-learn, Sentence-Transformers, NLTK, RapidFuzz, Azure OpenAI, Prompt Engineering
+Databases & DevOps: MongoDB, Docker, Git, GitHub, Postman, Linux / Bash
+Core Fundamentals: Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), DBMS, OS Basics
 
 PROJECTS
-1. CODEXA | React.js, Node.js, Express.js, MongoDB, JWT, REST APIs
-- Developed a full-stack coding platform inspired by LeetCode.
-- Implemented JWT-based authentication, RBAC, and secure RESTful APIs.
-- Built features: problem categorization, search, difficulty filters, and personalized dashboards.
-- Designed responsive React frontend & optimized MongoDB queries.
+CODEXA — Online Code Judge & Competitive Programming Platform [GitHub] [Live Demo]
+React.js, Node.js, Express.js, MongoDB, Docker, OpenJDK 17, Monaco Editor, JWT
+• Built a remote code execution engine that compiles and runs user-submitted Java inside Docker containers (OpenJDK 17) launched from Node.js child processes, enforcing timeout and memory limits on every submission.
+• Automated driver-code assembly (Java import reordering, stdin/stdout normalization) and verdict checking: Accepted, Wrong Answer, TLE, Compilation Error.
+• Integrated Monaco Editor (VS Code engine) for syntax highlighting and live execution, with a categorized problem library, difficulty filters and tag search.
+• Built REST APIs with JWT authentication and role-based access, plus MongoDB schemas for submission tracking, telemetry and user analytics dashboards.
 
-2. CVision | MERN Stack, RESTful API, JWT, Python, Machine Learning, Multer
-- Developed full-stack AI Resume Analyzer using MERN stack to analyze resumes against job descriptions.
-- Built RESTful APIs using Node.js & Express.js for resume upload, authentication, and processing.
-- Developed and integrated ML model to extract resume attributes and ATS compatibility scores.
+CVision — AI-Powered Resume Screener & Career Intelligence Platform [GitHub] [Live Demo]
+React 19, Node.js, Express.js, Python FastAPI, Scikit-learn, Sentence-Transformers, MongoDB
+• Built a resume screener with an Express.js backend and a separate Python FastAPI ML service, connected via IPC with dynamic port discovery.
+• Implemented semantic resume-to-job-description matching with Sentence-Transformers (all-MiniLM-L6-v2) and cosine similarity to compute ATS match scores, with a Scikit-learn TF-IDF fallback.
+• Built a skill-extraction pipeline mapping 60+ technology aliases with RapidFuzz and regex to flag missing skills and compare applicants against job descriptions.
+• Added personalized resume feedback using Ollama (Phi-3), and secured the backend with Helmet headers, rate limiting and bcrypt/JWT-protected routes.
 
-TRAINING
-- Gen AI with Azure — Summer Training (JOVAC), GLA University (June 2025 - July 2025)
+TRAINING & EXPERIENCE
+GenAI with Azure — Summer Trainee (JOVAC) GLA University | June 2025 – July 2025
+• Built generative AI prototypes on Microsoft Azure using Azure OpenAI Service (GPT models), prompt engineering workflows and system integration.
+• Applied Retrieval-Augmented Generation (RAG) with text embeddings and vector search to ground responses in external knowledge bases and reduce hallucinations.
 
-CERTIFICATIONS
-- Java Basic Certification — HackerRank
-- 500+ DSA Problems Solved on LeetCode`;
+ACHIEVEMENTS & PROBLEM SOLVING
+• 500+ DSA Problems Solved: Solved 500+ problems across LeetCode and GeeksforGeeks.
+• HackerRank Certified: Earned the HackerRank Java (Basic) certification covering OOP, exception handling, collections and multithreading fundamentals.
+• Full-Stack Deployments: Containerized with Docker and deployed 2 full-stack applications (CODEXA, CVision) live on Render.`;
 
     navigator.clipboard.writeText(resumeText);
     setCopied(true);
@@ -125,18 +129,8 @@ CERTIFICATIONS
               <span>&bull;</span>
               <a href={personalInfo.socials.github} target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
               <span>&bull;</span>
-              <a href="#leetcode" onClick={onClose} className="hover:underline">LeetCode (500+)</a>
+              <a href="#leetcode" onClick={onClose} className="hover:underline">LeetCode (500+ Solved)</a>
             </div>
-          </div>
-
-          {/* Professional Summary */}
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono border-b border-emerald-100 pb-1 mb-2">
-              Professional Summary
-            </h2>
-            <p className="text-slate-700 leading-relaxed text-xs sm:text-sm">
-              Computer Science undergraduate skilled in Java, DSA, and MERN stack development, with hands-on experience building fullstack and AI-powered applications. Developed CODEXA, a coding platform, and CVision, an AI Resume Analyzer integrating Machine Learning and REST APIs. Strong foundation in backend development, authentication, databases, and problem solving, with 500+ DSA problems solved on LeetCode.
-            </p>
           </div>
 
           {/* Education */}
@@ -147,25 +141,27 @@ CERTIFICATIONS
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between items-baseline font-bold text-slate-900">
-                  <span>GLA University, Mathura — B.Tech, Computer Science Engineering</span>
-                  <span className="font-mono text-xs text-slate-500">2023 – 2027</span>
+                  <span>GLA University</span>
+                  <span className="font-mono text-xs text-slate-500">Mathura, UP | 2023 – 2027 (Expected)</span>
+                </div>
+                <div className="flex justify-between text-xs text-slate-700 mt-0.5">
+                  <span>Bachelor of Technology in Computer Science & Engineering</span>
+                  <span className="font-mono font-semibold text-emerald-800">CGPA: 7.03 / 10.0</span>
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between items-baseline font-bold text-slate-900">
-                  <span>Powayan Inter College — 12th Grade</span>
-                  <span className="font-mono text-xs text-slate-500">2021</span>
+                <div className="flex justify-between items-baseline text-xs">
+                  <span className="font-bold text-slate-800">Senior Secondary (12th) — Powayan Inter College | UP Board</span>
+                  <span className="font-mono text-slate-500">2021 | 74.6%</span>
                 </div>
-                <div className="text-slate-600 font-mono text-xs">Percentage: 74.6%</div>
               </div>
 
               <div>
-                <div className="flex justify-between items-baseline font-bold text-slate-900">
-                  <span>P.D. Bhartiya Inter College — 10th Grade</span>
-                  <span className="font-mono text-xs text-slate-500">2019</span>
+                <div className="flex justify-between items-baseline text-xs">
+                  <span className="font-bold text-slate-800">Secondary (10th) — P.D. Bhartiya Inter College | UP Board</span>
+                  <span className="font-mono text-slate-500">2019 | 84.6%</span>
                 </div>
-                <div className="text-slate-600 font-mono text-xs">Percentage: 84.6%</div>
               </div>
             </div>
           </div>
@@ -175,77 +171,84 @@ CERTIFICATIONS
             <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono border-b border-emerald-100 pb-1 mb-2">
               Technical Skills
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
-              <div><strong className="text-slate-900">Programming Languages:</strong> Java, C, Python, SQL, JavaScript</div>
-              <div><strong className="text-slate-900">Frontend:</strong> HTML, CSS, React, Tailwind CSS</div>
-              <div><strong className="text-slate-900">Backend:</strong> Node.js, Express.js, JWT, REST APIs, Multer</div>
-              <div><strong className="text-slate-900">Database:</strong> MongoDB, Mongoose</div>
-              <div><strong className="text-slate-900">Concepts:</strong> OOP, DSA (500+ LeetCode), REST APIs</div>
-              <div><strong className="text-slate-900">Tools & Cloud:</strong> Git, GitHub, VS Code, Postman, Azure GenAI</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-700">
+              <div><strong className="text-slate-900 font-bold">Languages:</strong> Java (Core, OOP, Collections), Python, JavaScript (ES6+), C, SQL</div>
+              <div><strong className="text-slate-900 font-bold">Frontend Development:</strong> React.js, Tailwind CSS, Monaco Editor, HTML5, CSS3, Vite</div>
+              <div><strong className="text-slate-900 font-bold">Backend & APIs:</strong> Node.js, Express.js, FastAPI, RESTful APIs, JWT Authentication, Multer</div>
+              <div><strong className="text-slate-900 font-bold">AI & Machine Learning:</strong> Scikit-learn, Sentence-Transformers, NLTK, RapidFuzz, Azure OpenAI, Prompt Engineering</div>
+              <div><strong className="text-slate-900 font-bold">Databases & DevOps:</strong> MongoDB, Docker, Git, GitHub, Postman, Linux / Bash</div>
+              <div><strong className="text-slate-900 font-bold">Core Fundamentals:</strong> Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), DBMS, OS Basics</div>
             </div>
           </div>
 
           {/* Projects */}
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono border-b border-emerald-100 pb-1 mb-3">
-              Featured Projects
+              Projects
             </h2>
             
             {/* CODEXA */}
             <div className="mb-4">
               <div className="flex justify-between items-baseline">
-                <span className="font-bold text-slate-900 text-sm">CODEXA | React.js, Node.js, Express.js, MongoDB, JWT, REST APIs</span>
-                <span className="text-xs text-emerald-700 font-mono font-bold">Live Demo</span>
+                <span className="font-bold text-slate-900 text-sm">CODEXA — Online Code Judge & Competitive Programming Platform</span>
+                <span className="text-xs text-emerald-700 font-mono font-bold">[GitHub] [Live Demo]</span>
               </div>
-              <ul className="list-disc list-inside space-y-1 mt-1 text-slate-700 text-xs">
-                <li>Developed a full-stack coding platform inspired by LeetCode, allowing users to practice coding problems, submit solutions, and monitor their learning progress.</li>
-                <li>Implemented JWT-based authentication, role-based access control, and secure RESTful APIs for user management, problem handling, and submissions.</li>
-                <li>Built features such as problem categorization, search, difficulty filters, and personalized dashboards to enhance the coding experience.</li>
-                <li>Designed a responsive React frontend and optimized MongoDB database operations to ensure fast, scalable, and reliable application performance.</li>
+              <div className="text-[11px] font-mono text-slate-500 font-medium mb-1">
+                React.js, Node.js, Express.js, MongoDB, Docker, OpenJDK 17, Monaco Editor, JWT
+              </div>
+              <ul className="list-disc list-inside space-y-1 mt-1 text-slate-700 text-xs leading-relaxed">
+                <li>Built a remote code execution engine that compiles and runs user-submitted Java inside Docker containers (OpenJDK 17) launched from Node.js child processes, enforcing timeout and memory limits on every submission.</li>
+                <li>Automated driver-code assembly (Java import reordering, stdin/stdout normalization) and verdict checking: Accepted, Wrong Answer, TLE, Compilation Error.</li>
+                <li>Integrated Monaco Editor (VS Code engine) for syntax highlighting and live execution, with a categorized problem library, difficulty filters and tag search.</li>
+                <li>Built REST APIs with JWT authentication and role-based access, plus MongoDB schemas for submission tracking, telemetry and user analytics dashboards.</li>
               </ul>
             </div>
 
             {/* CVision */}
             <div>
               <div className="flex justify-between items-baseline">
-                <span className="font-bold text-slate-900 text-sm">CVision | MERN Stack, RESTful API, JWT, Python, Machine Learning, Multer</span>
-                <span className="text-xs text-emerald-700 font-mono font-bold">Live Demo</span>
+                <span className="font-bold text-slate-900 text-sm">CVision — AI-Powered Resume Screener & Career Intelligence Platform</span>
+                <span className="text-xs text-emerald-700 font-mono font-bold">[GitHub] [Live Demo]</span>
               </div>
-              <ul className="list-disc list-inside space-y-1 mt-1 text-slate-700 text-xs">
-                <li>Developed a full-stack AI Resume Analyzer using the MERN stack to analyze resumes against job descriptions and generate an ATS-style compatibility score with actionable insights.</li>
-                <li>Built RESTful APIs using Node.js and Express.js for resume upload, user authentication, resume analysis, and result processing with JWT-based authentication and protected routes.</li>
-                <li>Developed and integrated a machine learning model trained on a custom dataset to extract and evaluate resume attributes, including skills, experience, education, and job-description relevance.</li>
-                <li>Built a responsive React.js dashboard to display resume analysis results and recommendations.</li>
+              <div className="text-[11px] font-mono text-slate-500 font-medium mb-1">
+                React 19, Node.js, Express.js, Python FastAPI, Scikit-learn, Sentence-Transformers, MongoDB
+              </div>
+              <ul className="list-disc list-inside space-y-1 mt-1 text-slate-700 text-xs leading-relaxed">
+                <li>Built a resume screener with an Express.js backend and a separate Python FastAPI ML service, connected via IPC with dynamic port discovery.</li>
+                <li>Implemented semantic resume-to-job-description matching with Sentence-Transformers (all-MiniLM-L6-v2) and cosine similarity to compute ATS match scores, with a Scikit-learn TF-IDF fallback.</li>
+                <li>Built a skill-extraction pipeline mapping 60+ technology aliases with RapidFuzz and regex to flag missing skills and compare applicants against job descriptions.</li>
+                <li>Added personalized resume feedback using Ollama (Phi-3), and secured the backend with Helmet headers, rate limiting and bcrypt/JWT-protected routes.</li>
               </ul>
             </div>
           </div>
 
-          {/* Training */}
+          {/* Training & Experience */}
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono border-b border-emerald-100 pb-1 mb-2">
-              Training
+              Training & Experience
             </h2>
             <div>
               <div className="flex justify-between items-baseline font-bold text-slate-900">
-                <span>Gen AI with Azure — Summer Training (JOVAC), GLA University</span>
-                <span className="font-mono text-xs text-slate-500">June 2025 – July 2025</span>
+                <span>GenAI with Azure — Summer Trainee (JOVAC)</span>
+                <span className="font-mono text-xs text-slate-500">GLA University | June 2025 – July 2025</span>
               </div>
-              <p className="text-xs text-slate-700 mt-1">
-                Built and deployed GenAI solutions on Microsoft Azure, working hands-on with Azure OpenAI, prompt engineering, and AI-powered application design.
-              </p>
+              <ul className="list-disc list-inside space-y-1 mt-1 text-slate-700 text-xs">
+                <li>Built generative AI prototypes on Microsoft Azure using Azure OpenAI Service (GPT models), prompt engineering workflows and system integration.</li>
+                <li>Applied Retrieval-Augmented Generation (RAG) with text embeddings and vector search to ground responses in external knowledge bases and reduce hallucinations.</li>
+              </ul>
             </div>
           </div>
 
-          {/* Certifications & Soft Skills */}
+          {/* Achievements & Problem Solving */}
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-emerald-800 font-mono border-b border-emerald-100 pb-1 mb-2">
-              Certifications & Soft Skills
+              Achievements & Problem Solving
             </h2>
-            <div className="space-y-1 text-xs text-slate-700">
-              <div><strong className="text-slate-900">Certifications:</strong> Java Basic Certification — HackerRank</div>
-              <div><strong className="text-slate-900">Soft Skills:</strong> Problem Solving, Communication, Teamwork, Leadership, Time Management</div>
-              <div><strong className="text-slate-900">Key Milestone:</strong> 500+ DSA Problems Solved on LeetCode across Java & C++</div>
-            </div>
+            <ul className="list-disc list-inside space-y-1 text-xs text-slate-700">
+              <li><strong className="text-slate-900">500+ DSA Problems Solved:</strong> Solved 500+ problems across LeetCode and GeeksforGeeks.</li>
+              <li><strong className="text-slate-900">HackerRank Certified:</strong> Earned the HackerRank Java (Basic) certification covering OOP, exception handling, collections and multithreading fundamentals.</li>
+              <li><strong className="text-slate-900">Full-Stack Deployments:</strong> Containerized with Docker and deployed 2 full-stack applications (CODEXA, CVision) live on Render.</li>
+            </ul>
           </div>
 
         </div>

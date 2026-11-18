@@ -78,7 +78,7 @@ export default function Projects({ onSelectProject }) {
 
                   {/* Core Features list */}
                   <div className="space-y-2.5 mb-8">
-                    {project.features.slice(0, 3).map((feat, idx) => (
+                    {project.features.map((feat, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{feat}</span>
@@ -141,13 +141,13 @@ export default function Projects({ onSelectProject }) {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h4 className="text-xl font-bold text-slate-900">GenAI with Azure & Prompt Engineering</h4>
+                <h4 className="text-xl font-bold text-slate-900">GenAI with Azure & RAG Vector Search</h4>
                 <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 font-mono font-semibold">
                   JOVAC GLA Univ
                 </span>
               </div>
               <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
-                Hands-on enterprise application development with Microsoft Azure OpenAI, prompt engineering pipelines, and connecting intelligent LLMs with backend RESTful microservices.
+                Built generative AI prototypes on Microsoft Azure using Azure OpenAI Service (GPT models) with Retrieval-Augmented Generation (RAG) and text embeddings to ground responses in external knowledge bases.
               </p>
             </div>
           </div>

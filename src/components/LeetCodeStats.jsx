@@ -49,7 +49,7 @@ export default function LeetCodeStats() {
             500+ DSA Problems <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600">Conquered</span>
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            A proven track record of algorithmic problem solving with Java & C++. Rigorous practice in data structures, time-space optimization, and clean logic.
+            A proven track record of 500+ algorithmic problems solved across LeetCode & GeeksforGeeks with Java (Core, OOP, Collections). Rigorous practice in data structures, time-space optimization, and clean logic.
           </p>
         </div>
 
@@ -67,8 +67,8 @@ export default function LeetCodeStats() {
                     <Code2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 text-lg">LeetCode Profile</h3>
-                    <p className="text-xs text-slate-500 font-mono">Continuous Problem Solver</p>
+                    <h3 className="font-bold text-slate-900 text-lg">LeetCode & GFG</h3>
+                    <p className="text-xs text-slate-500 font-mono">500+ Problems Solved</p>
                   </div>
                 </div>
 
@@ -83,7 +83,7 @@ export default function LeetCodeStats() {
                   500+
                 </span>
                 <span className="text-slate-800 font-bold mt-1">Problems Solved Across Difficulties</span>
-                <span className="text-xs text-slate-500 font-mono mt-0.5">Java &bull; Object-Oriented Design &bull; Optimal Complexity</span>
+                <span className="text-xs text-slate-500 font-mono mt-0.5">LeetCode &bull; GeeksforGeeks &bull; Java (OOP, Collections)</span>
               </div>
 
               {/* Progress Bars */}
